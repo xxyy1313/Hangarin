@@ -1,0 +1,89 @@
+body.dark-body {
+    background: linear-gradient(135deg, #050505, #101010, #161616);
+    min-height: 100vh;
+    color: #ffffff;
+    font-family: Arial, sans-serif;
+}
+
+.dark-nav {
+    background: rgba(10, 10, 10, 0.95);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.glass-card {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+}
+
+.stat-card {
+    background: linear-gradient(145deg, #111111, #1a1a1a);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 18px;
+    padding: 24px;
+    color: white;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.35);
+}
+
+.stat-card h6 {
+    color: #aaaaaa;
+    margin-bottom: 10px;
+}
+
+.stat-card h2 {
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.task-card {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 18px;
+    padding: 20px;
+    color: white;
+    height: 100%;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.task-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+}
+
+.task-card h5,
+.task-card h6 {
+    color: #ffffff;
+}
+
+.task-card p {
+    color: #bdbdbd;
+}
+
+.dark-input,
+.form-control,
+.form-select {
+    background: #111111 !important;
+    color: white !important;
+    border: 1px solid #333 !important;
+    border-radius: 12px !important;
+}
+
+.form-control::placeholder {
+    color: #888 !important;
+}
+
+.form-label {
+    font-weight: 600;
+}
+
+.btn-light {
+    border-radius: 12px;
+    font-weight: 600;
+}
+
+.btn-outline-light,
+.btn-outline-danger {
+    border-radius: 12px;
+}

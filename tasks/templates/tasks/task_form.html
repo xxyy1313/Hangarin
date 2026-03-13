@@ -1,0 +1,42 @@
+{% extends 'tasks/base.html' %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-lg-8">
+        <div class="glass-card p-5">
+            <h2 class="text-light fw-bold mb-4">{{ page_title }}</h2>
+
+            <form method="POST">
+                {% csrf_token %}
+                <div class="mb-3">
+                    <label class="form-label text-light">Title</label>
+                    {{ form.title }}
+                </div>
+                <div class="mb-3">
+                    <label class="form-label text-light">Description</label>
+                    {{ form.description }}
+                </div>
+                <div class="mb-3">
+                    <label class="form-label text-light">Deadline</label>
+                    {{ form.deadline }}
+                </div>
+                <div class="mb-3">
+                    <label class="form-label text-light">Status</label>
+                    {{ form.status }}
+                </div>
+                <div class="mb-3">
+                    <label class="form-label text-light">Category</label>
+                    {{ form.category }}
+                </div>
+                <div class="mb-4">
+                    <label class="form-label text-light">Priority</label>
+                    {{ form.priority }}
+                </div>
+
+                <button type="submit" class="btn btn-light">Save Task</button>
+                <a href="{% url 'task_list' %}" class="btn btn-outline-light ms-2">Cancel</a>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

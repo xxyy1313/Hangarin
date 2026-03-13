@@ -1,0 +1,49 @@
+{% extends 'tasks/base.html' %}
+
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <div>
+        <h1 class="text-light fw-bold">All Tasks</h1>
+        <p class="text-secondary">Manage your work in one place.</p>
+    </div>
+    <a href="{% url 'task_create' %}" class="btn btn-light">+ New Task</a>
+</div>
+
+<div class="glass-card p-4 mb-4">
+    <form method="GET" class="row g-3">
+        <div class="col-md-12">
+            <input type="text" name="q" class="form-control dark-input" placeholder="Search tasks...">
+        </div>
+        <div class="col-md-12">
+            <button type="submit" class="btn btn-outline-light">Search</button>
+        </div>
+    </form>
+</div>
+
+<div class="row g-4">
+    {% for task in tasks %}
+    <div class="col-md-6 col-lg-4">
+        <div class="task-card">
+            <h5>{{ task.title }}</h5>
+            <p>{{ task.description|truncatechars:100 }}</p>
+
+            <div class="mb-2">
+                <span class="badge bg-secondary">{{ task.status }}</span>
+                <span class="badge bg-dark border">{{ task.priority }}</span>
+                <span class="badge bg-dark border">{{ task.category }}</span>
+            </div>
+
+            <small class="text-secondary d-block mb-3">Deadline: {{ task.deadline }}</small>
+
+            <div class="d-flex gap-2">
+                <a href="{% url 'task_detail' task.pk %}" class="btn btn-sm btn-light">View</a>
+                <a href="{% url 'task_update' task.pk %}" class="btn btn-sm btn-outline-light">Edit</a>
+                <a href="{% url 'task_delete' task.pk %}" class="btn btn-sm btn-outline-danger">Delete</a>
+            </div>
+        </div>
+    </div>
+    {% empty %}
+    <p class="text-secondary">No tasks found.</p>
+    {% endfor %}
+</div>
+{% endblock %}

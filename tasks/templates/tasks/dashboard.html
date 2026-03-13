@@ -1,0 +1,61 @@
+{% extends 'tasks/base.html' %}
+
+{% block content %}
+<div class="mb-5">
+    <h1 class="text-light fw-bold">Task Dashboard</h1>
+    <p class="text-secondary">Stay focused. Track your goals. Finish strong.</p>
+</div>
+
+<div class="row g-4 mb-5">
+    <div class="col-md-3">
+        <div class="stat-card">
+            <h6>Total Tasks</h6>
+            <h2>{{ total_tasks }}</h2>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="stat-card">
+            <h6>Pending</h6>
+            <h2>{{ pending_tasks }}</h2>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="stat-card">
+            <h6>In Progress</h6>
+            <h2>{{ in_progress_tasks }}</h2>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="stat-card">
+            <h6>Completed</h6>
+            <h2>{{ completed_tasks }}</h2>
+        </div>
+    </div>
+</div>
+
+<div class="glass-card p-4">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h3 class="text-light">Recent Tasks</h3>
+        <a href="{% url 'task_list' %}" class="btn btn-outline-light btn-sm">View All</a>
+    </div>
+
+    <div class="row g-4">
+        {% for task in tasks %}
+        <div class="col-md-6 col-lg-4">
+            <div class="task-card">
+                <h5>{{ task.title }}</h5>
+                <p>{{ task.description|truncatechars:90 }}</p>
+                <div class="mb-2">
+                    <span class="badge bg-secondary">{{ task.status }}</span>
+                    <span class="badge bg-dark border">{{ task.priority }}</span>
+                    <span class="badge bg-dark border">{{ task.category }}</span>
+                </div>
+                <a href="{% url 'task_detail' task.pk %}" class="btn btn-sm btn-light mt-2">View Details</a>
+            </div>
+        </div>
+        {% empty %}
+        <p class="text-secondary">No tasks available yet.</p>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
